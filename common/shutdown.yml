@@ -1,0 +1,10 @@
+---
+- name: shutdown cluster
+  hosts: all 
+  user: bartok
+  become: yes
+  become_user: root
+  tasks:
+    - name: shutdown
+      command: /sbin/shutdown -h now
+      ignore_errors: yes

@@ -1,0 +1,9 @@
+---
+- name: reboot cluster
+  hosts: all 
+  user: bartok
+  become: yes
+  become_user: root
+  tasks:
+    - name: reboot
+      reboot:

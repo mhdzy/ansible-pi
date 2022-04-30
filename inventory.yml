@@ -1,0 +1,30 @@
+---
+all:
+  hosts:
+    pi4b0:
+      ansible_host: pi4b0
+    pi4b1:
+      ansible_host: pi4b1
+    pi4b2:
+      ansible_host: pi4b2
+    pi4b3:
+      ansible_host: pi4b3
+  children:
+    cluster:
+      hosts:
+        pi4b0: {}
+        pi4b1: {}
+        pi4b2: {}
+        pi4b3: {}
+    master:
+      hosts:
+        pi4b0: {}
+    workers:
+      hosts:
+        pi4b1: {}
+        pi4b2: {}
+        pi4b3: {}
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    remote_user: bartok

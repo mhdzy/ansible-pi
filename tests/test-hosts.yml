@@ -1,0 +1,9 @@
+---
+- name: test ansible hosts
+  hosts: all
+  user: bartok
+  become: yes
+  become_user: bartok
+  tasks:
+    - debug: msg="Ansible running in {{ansible_lsb.id}}!"
+

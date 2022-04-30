@@ -1,0 +1,12 @@
+---
+- name: upgrade apt
+  hosts: all
+  user: bartok
+  become: yes
+  become_user: root
+  tasks:
+    - name: upgrade (and update) apt
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400
