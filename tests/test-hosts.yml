@@ -5,5 +5,5 @@
   become: yes
   become_user: bartok
   tasks:
-    - debug: msg="Ansible running in {{ansible_lsb.id}}!"
+    - debug: msg="Ansible running in {{ ansible_lsb.id }}!"
 
