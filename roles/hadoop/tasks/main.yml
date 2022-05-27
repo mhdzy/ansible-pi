@@ -1,0 +1,7 @@
+---
+- name: Init Hadoop directory
+  user: bartok
+  become: yes
+  become_user: bartok
+  file:
+    path: "{{ hadoop_home }}"

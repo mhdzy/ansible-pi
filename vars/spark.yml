@@ -1,0 +1,8 @@
+---
+
+# basic spark env vars
+spark_home: "/opt/spark"
+spark_version: "3.2.1"
+spark_download_dir: "/etc"
+
+spark_install: "{{ spark_home }}"

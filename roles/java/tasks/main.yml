@@ -1,0 +1,13 @@
+---
+- name: install default-jdk
+  apt:
+    name: "{{ java_packages }}"
+    state: present
+
+- name: copy JAVA_HOME script to /etc/profile.d
+  template: 
+    src: java_home.sh 
+    dest: /etc/profile.d
+
+- name: source JAVA_HOME script
+  shell: source /etc/profile.d/java_home.sh

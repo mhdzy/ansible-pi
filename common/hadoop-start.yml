@@ -1,0 +1,14 @@
+---
+- name: start hadoop cluster
+  hosts: master
+  user: bartok
+  become: yes
+  become_user: bartok
+  tasks:
+    - name: start dfs
+      command: start-dfs.sh
+    - name: start mapred
+      command: start-mapred.sh
+    - name: start yarn
+      command: start-yarn.sh
+      

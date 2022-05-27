@@ -1,0 +1,8 @@
+---
+- name: Setup Raspberry Pi cluster from scratch
+  user: bartok
+  become: yes
+  become_user: bartok
+  roles:
+    - init
+    - common

@@ -1,0 +1,12 @@
+---
+- name: start spark cluster
+  hosts: master
+  user: bartok
+  become: yes
+  become_user: bartok
+  tasks:
+    - name: start master
+      command: start-master.sh
+    - name: start workers
+      command: start-workers.sh
+      

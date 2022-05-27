@@ -1,0 +1,11 @@
+---
+- name: stop spark cluster
+  hosts: master
+  user: bartok
+  become: yes
+  become_user: bartok
+  tasks:
+    - name: stop master
+      command: stop-master.sh
+    - name: stop workers
+      command: stop-workers.sh
