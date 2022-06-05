@@ -28,6 +28,8 @@ if [[ -z "$SPARK_SETUP_FLAG" ]]; then
   # =====
   # spark, hive, zookeeper, kafka
   export SPARK_HOME={{ spark_home }}
+  # this variable (as we set it) is automatically derived by Spark
+  # export SPARK_CONF_DIR={{ spark_conf_dir }}
   export SPARK_MASTER_HOST={{ master_ip }}
   export PATH="$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH"
 

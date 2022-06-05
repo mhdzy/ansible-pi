@@ -14,6 +14,7 @@ spark_home: "{{ spark_root }}/spark"
 spark_version: "3.2.1"
 spark_hadoop_version: "3.2"
 spark_download_dir: "/etc"
+spark_conf_dir: "{{ spark_home }}/conf"
 
 spark_env_file: "spark-env.sh"
 spark_defaults_file: "spark-defaults.conf"
