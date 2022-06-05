@@ -1,13 +1,26 @@
 ---
-- name: install default-jdk
-  apt:
+- name: install {{ java_packages }}
+  become: yes
+  ansible.builtin.apt:
     name: "{{ java_packages }}"
     state: present
 
-- name: copy JAVA_HOME script to /etc/profile.d
-  template: 
-    src: java_home.sh 
+- name: copy java-env script to /etc/profile.d
+  become: yes
+  ansible.builtin.template: 
+    src: java-env.sh 
     dest: /etc/profile.d
 
-- name: source JAVA_HOME script
-  shell: source /etc/profile.d/java_home.sh
+- name: source java-env script
+  become: yes
+  args:
+    executable: /bin/bash
+  ansible.builtin.shell: 
+    cmd: source /etc/profile.d/java-env.sh
+
+- name: append sourcing java-env script to .bashrc
+  ansible.builtin.lineinfile:
+      dest: "{{ user_home }}/.bashrc"
+      line: "[[ -s /etc/profile.d/java-env.sh ]] && source /etc/profile.d/java-env.sh"
+      owner: "{{ user }}"
+      group: "{{ group }}"

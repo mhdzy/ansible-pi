@@ -1,3 +1,13 @@
 ---
-user: "bartok"
-group: "bartok"
+user: bartok
+group: bartok
+
+root_user: root
+
+user_home: /home/{{ user }}
+root_home: /home/{{ root_user }}
+
+user_download_dir: "{{ user_home }}"
+user_install_dir: /usr/local/bin
+
+bash_alias_file: .bash_alises

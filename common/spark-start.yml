@@ -6,7 +6,7 @@
   become_user: bartok
   tasks:
     - name: start master
-      command: start-master.sh
+      ansible.builtin.command: start-master.sh
     - name: start workers
-      command: start-workers.sh
+      ansible.builtin.command: start-workers.sh
       

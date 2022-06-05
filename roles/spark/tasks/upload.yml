@@ -1,0 +1,8 @@
+---
+- name: Upload Spark {{ spark_version }} to Spark directory
+  become: yes
+  ansible.builtin.copy:
+    src: ~/Downloads/spark-{{ spark_version }}-bin-hadoop{{ spark_hadoop_version }}.tar
+    dest: "{{ spark_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"

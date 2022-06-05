@@ -6,9 +6,9 @@
   become_user: bartok
   tasks:
     - name: start dfs
-      command: start-dfs.sh
+      ansible.builtin.command: start-dfs.sh
     - name: start mapred
-      command: start-mapred.sh
+      ansible.builtin.command: start-mapred.sh
     - name: start yarn
-      command: start-yarn.sh
+      ansible.builtin.command: start-yarn.sh
       

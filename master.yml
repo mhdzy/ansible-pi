@@ -1,0 +1,17 @@
+- hosts: master
+  remote_user: bartok
+  vars_files:
+    - vars/cluster.yml
+    - vars/init.yml
+    - vars/hadoop.yml
+    - vars/java.yml
+    - vars/spark.yml
+    - vars/user.yml
+    - vars/yarn.yml
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - init
+    # - java
+    - hadoop
+    - spark

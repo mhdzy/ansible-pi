@@ -1,0 +1,16 @@
+# =====
+# startup sequence
+# =====
+
+# prefer pfetch > neofetch
+# neofetch --ascii_bold on --ascii_colors 40 226 172 196 69
+
+export PF_ASCII="raspbian"
+
+login_screen() {
+  echo; figlet -c $(hostname)
+  echo; pfetch
+  echo
+}
+
+login_screen $@

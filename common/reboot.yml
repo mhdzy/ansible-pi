@@ -6,4 +6,4 @@
   become_user: root
   tasks:
     - name: reboot
-      reboot:
+      ansible.builtin.reboot:

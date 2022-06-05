@@ -1,0 +1,8 @@
+---
+- name: Download Spark {{ spark_version }} to Spark directory
+  ansible.builtin.get_url:
+    url: "https://www.apache.org/dyn/closer.lua/spark/spark-{{ spark_version ]}/spark-{{ spark_version ]}-bin-hadoop{{ spark_hadoop_version }}.tgz"
+    dest: "{{ spark_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0755

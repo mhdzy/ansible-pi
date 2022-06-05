@@ -1,0 +1,28 @@
+---
+- name: Copy {{ bash_aliases_file }} file
+  ansible.builtin.copy:
+    src: "{{ bash_aliases_file }}"
+    dest: "{{ user_home }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Add sourcing of {{ bash_aliases_file }} to .bashrc
+  ansible.builtin.lineinfile:
+      dest: "{{ user_home }}/.bashrc"
+      line: "[[ -s {{ user_home }}/{{ bash_aliases_file }} ]] && source {{ user_home }}/{{ bash_aliases_file }}"
+      owner: "{{ user }}"
+      group: "{{ group }}"
+
+- name: Copy {{ bash_welcome_file }} file
+  ansible.builtin.copy:
+    src: "{{ bash_welcome_file }}"
+    dest: "{{ user_home }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Add sourcing of {{ bash_welcome_file }} to .bashrc
+  ansible.builtin.lineinfile:
+      dest: "{{ user_home }}/.bashrc"
+      line: "[[ -s {{ user_home }}/{{ bash_welcome_file }} ]] && source {{ user_home }}/{{ bash_welcome_file }}"
+      owner: "{{ user }}"
+      group: "{{ group }}"

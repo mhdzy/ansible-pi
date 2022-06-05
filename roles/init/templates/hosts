@@ -1,0 +1,18 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+# 127.0.0.1 localhost
+# 127.0.0.1	{{ ansible_host }}
+::1		    localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+# Raspberry Pi Cluster
+192.168.0.240    pi4b0
+192.168.0.241    pi4b1
+192.168.0.242    pi4b2
+192.168.0.243    pi4b3
+192.168.0.244    pi4b4

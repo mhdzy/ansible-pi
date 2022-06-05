@@ -1,5 +1,5 @@
 ---
-- name: install pip 
-  apt: 
-    name: pip 
-    state: present
+# - ansible.builtin.include: apt.yml
+# - ansible.builtin.include: bash.yml
+- ansible.builtin.include: network.yml
+# - ansible.builtin.include: pfetch.yml

@@ -1,8 +1,42 @@
 ---
 
+# some cluster configs
+
+spark_master_nodes: "pi4b0"
+spark_worker_nodes:
+  - { "name":"pi4b1" }
+  - { "name":"pi4b2" }
+  - { "name":"pi4b3" }
+
 # basic spark env vars
-spark_home: "/opt/spark"
+spark_root: "/opt"
+spark_home: "{{ spark_root }}/spark"
 spark_version: "3.2.1"
+spark_hadoop_version: "3.2"
 spark_download_dir: "/etc"
 
+spark_env_file: "spark-env.sh"
+spark_defaults_file: "spark-defaults.conf"
+spark_workers_file: "workers"
+spark_conf_dir: "{{ spark_home }}/conf"
+
 spark_install: "{{ spark_home }}"
+
+spark_master_ip: 192.168.0.240
+spark_master_port: 7077
+
+spark_eventlog_enabled: "true"
+spark_eventlog_dir: "hdfs://{{ master_ip }}:{{ spark_master_port }}/spark-logs"
+spark_history_provider: "org.apache.spark.deploy.history.FsHistoryProvider"
+spark_history_fs_logdirectory: "hdfs://{{ master_ip }}:{{ spark_master_port }}/spark-logs"
+spark_history_fs_update_interval: "10s"
+spark_history_ui_port: 18080
+
+spark_master: "yarn"
+spark_yarn_am_memory: "2048m"
+spark_driver_memory: "2048m"
+spark_driver_cores: "2"
+spark_executor_instances: "4"
+spark_executor_memory: "1024m"
+spark_executor_cores: "1"
+spark_default_parallelism: "1"

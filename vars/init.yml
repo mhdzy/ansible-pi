@@ -1,0 +1,22 @@
+---
+hosts_dir: "/etc"
+hosts_file: "hosts"
+
+dhcpcd_file: "dhcpcd.conf"
+dhcpcd_dir: "{{ hosts_dir }}"
+
+ip_addresses:
+  pi4b0: 192.168.0.240
+  pi4b1: 192.168.0.241
+  pi4b2: 192.168.0.242
+  pi4b3: 192.168.0.243
+  pi4b4: 192.168.0.244
+
+pip_pkg: pip
+figlet_pkg: figlet
+
+pfetch_pkg: pfetch
+pfetch_url: https://github.com/dylanaraps/pfetch.git
+
+bash_aliases_file: .bash_aliases
+bash_welcome_file: .bash_welcome

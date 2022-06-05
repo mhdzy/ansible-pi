@@ -6,9 +6,9 @@
   become_user: bartok
   tasks:
     - name: stop dfs
-      command: stop-dfs.sh
+      ansible.builtin.command: stop-dfs.sh
     - name: stop mapred
-      command: stop-mapred.sh
+      ansible.builtin.command: stop-mapred.sh
     - name: stop yarn
-      command: stop-yarn.sh
+      ansible.builtin.command: stop-yarn.sh
       
