@@ -24,11 +24,12 @@ spark_install: "{{ spark_home }}"
 
 spark_master_ip: 192.168.0.240
 spark_master_port: 7077
+spark_hdfs_port: 9000
 
 spark_eventlog_enabled: "true"
-spark_eventlog_dir: "hdfs://{{ master_ip }}:{{ spark_master_port }}/spark-logs"
+spark_eventlog_dir: "hdfs://{{ master_ip }}:{{ spark_hdfs_port }}/spark-logs"
 spark_history_provider: "org.apache.spark.deploy.history.FsHistoryProvider"
-spark_history_fs_logdirectory: "hdfs://{{ master_ip }}:{{ spark_master_port }}/spark-logs"
+spark_history_fs_logdirectory: "hdfs://{{ master_ip }}:{{ spark_hdfs_port }}/spark-logs"
 spark_history_fs_update_interval: "10s"
 spark_history_ui_port: 18080
 
