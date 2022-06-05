@@ -93,7 +93,7 @@ hdfs_site_properties:
   }
   - {
     "name":"dfs.replication",
-    "value":"{{ groups['workers']|length }}"
+    "value":"{{ groups['workers']|length - 1 }}"
   }
   - {
     "name":"dfs.webhdfs.enabled",
