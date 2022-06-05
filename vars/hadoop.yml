@@ -22,7 +22,6 @@ mapreduce_map_resource_memory_mb: 2048
 mapreduce_reduce_resource_memory_mb: 2048
 
 # basic hadoop env vars
-java_home: "/usr/lib/jvm/java-11-openjdk-arm64"
 hadoop_root: "/opt"
 hadoop_home: "{{ hadoop_root }}/hadoop"
 hadoop_path: "{{ hadoop_home }}"
