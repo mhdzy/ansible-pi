@@ -42,3 +42,6 @@ ansible-playbook master.yml
 ansible-playbook workers.yml
 ```
 
+## License
+
+Distributed under the GPL-3 license with source code from [pippozq](https://github.com/pippozq/hadoop-ansible).
