@@ -1,6 +1,6 @@
 ---
 - name: create hadoop paths
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     owner: "{{ user }}"
     group: "{{ group }}"
@@ -73,9 +73,9 @@
   ansible.builtin.shell:
     cmd: source "{{ etc_profile_d }}/{{ hadoop_env_file }}"
 
-- name: append sourcing Hadoop env to .bashrc
+- name: append sourcing Hadoop env to {{ bash_rc_filename }}
   ansible.builtin.lineinfile:
-      dest: "{{ user_home }}/.bashrc"
+      dest: "{{ bash_rc_file }}"
       line: "[[ -s {{ etc_profile_d }}/{{ hadoop_env_file }} ]] && source {{ etc_profile_d }}/{{ hadoop_env_file }}"
       owner: "{{ user }}"
       group: "{{ group }}"

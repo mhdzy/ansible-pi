@@ -11,6 +11,7 @@ spark_worker_nodes:
 # basic spark env vars
 spark_root: "/opt"
 spark_home: "{{ spark_root }}/spark"
+spark_install: "{{ spark_home }}"
 spark_version: "3.2.1"
 spark_hadoop_version: "3.2"
 spark_download_dir: "/etc"
@@ -19,9 +20,6 @@ spark_conf_dir: "{{ spark_home }}/conf"
 spark_env_file: "spark-env.sh"
 spark_defaults_file: "spark-defaults.conf"
 spark_workers_file: "workers"
-spark_conf_dir: "{{ spark_home }}/conf"
-
-spark_install: "{{ spark_home }}"
 
 spark_master_ip: 192.168.0.240
 spark_master_port: 7077

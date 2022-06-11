@@ -34,9 +34,9 @@
   ansible.builtin.shell:
     cmd: source "{{ etc_profile_d }}/{{ spark_env_file }}"
 
-- name: append sourcing Spark env to .bashrc
+- name: append sourcing Spark env to {{ bash_rc_filename }}
   ansible.builtin.lineinfile:
-      dest: "{{ user_home }}/.bashrc"
+      dest: "{{ bash_rc_file }}"
       line: "[[ -s {{ etc_profile_d }}/{{ spark_env_file }} ]] && source {{ etc_profile_d }}/{{ spark_env_file }}"
       owner: "{{ user }}"
       group: "{{ group }}"
