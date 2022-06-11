@@ -1,22 +1,37 @@
 ---
-hosts_dir: "/etc"
+init_apt_deps:
+  - pip
+  - figlet
+  - vim
+
+etc_dir: "/etc"
+
+hosts_dir: "{{ etc_dir }}"
 hosts_file: "hosts"
 
-dhcpcd_file: "dhcpcd.conf"
-dhcpcd_dir: "{{ hosts_dir }}"
+dns_server: 8.8.8.8
 
-ip_addresses:
-  pi4b0: 192.168.0.240
-  pi4b1: 192.168.0.241
-  pi4b2: 192.168.0.242
-  pi4b3: 192.168.0.243
-  pi4b4: 192.168.0.244
+dhcpcd_dir: "{{ etc_dir }}"
+dhcpcd_file: "dhcpcd.conf"
+
+resolv_dir: "{{ etc_dir }}"
+resolv_file: "{{ etc_dir }}/resolv.conf"
+resolv_d: systemd-resolved.service
+
+interfaces_file: "interfaces"
+network_interfaces_dir: "{{ etc_dir }}/network"
+network_interfaces_file: "{{ network_interfaces_dir }}/{{ interfaces_file }}"
+
+cluster_key_algorithm: ed25519
+cluster_key_dir: "{{ user_home }}/.ssh"
+cluster_key_file: "{{ cluster_key_dir }}/cluster_{{ cluster_key_algorithm }}"
+
+github_key_algorithm: ed25519
+github_key_dir: "{{ user_home }}/.ssh"
+github_key_file: "{{ github_key_dir }}/github_{{ github_key_algorithm }}"
 
 pip_pkg: pip
 figlet_pkg: figlet
 
 pfetch_pkg: pfetch
 pfetch_url: https://github.com/dylanaraps/pfetch.git
-
-bash_aliases_file: .bash_aliases
-bash_welcome_file: .bash_welcome

@@ -1,28 +1,28 @@
 ---
-- name: Copy {{ bash_aliases_file }} file
+- name: Copy {{ bash_aliases_filename }} file
   ansible.builtin.copy:
-    src: "{{ bash_aliases_file }}"
+    src: "{{ bash_aliases_filename }}"
     dest: "{{ user_home }}"
     owner: "{{ user }}"
     group: "{{ group }}"
 
-- name: Add sourcing of {{ bash_aliases_file }} to .bashrc
+- name: Add sourcing of {{ bash_aliases_filename }} to .bashrc
   ansible.builtin.lineinfile:
-      dest: "{{ user_home }}/.bashrc"
-      line: "[[ -s {{ user_home }}/{{ bash_aliases_file }} ]] && source {{ user_home }}/{{ bash_aliases_file }}"
+      dest: "{{ bash_rc_file }}"
+      line: "[[ -s {{ bash_aliases_file }} ]] && source {{ bash_aliases_file }}"
       owner: "{{ user }}"
       group: "{{ group }}"
 
-- name: Copy {{ bash_welcome_file }} file
+- name: Copy {{ bash_welcome_filename }} file
   ansible.builtin.copy:
-    src: "{{ bash_welcome_file }}"
+    src: "{{ bash_welcome_filename }}"
     dest: "{{ user_home }}"
     owner: "{{ user }}"
     group: "{{ group }}"
 
-- name: Add sourcing of {{ bash_welcome_file }} to .bashrc
+- name: Add sourcing of {{ bash_welcome_filename }} to {{ bash_rc_filename }}
   ansible.builtin.lineinfile:
-      dest: "{{ user_home }}/.bashrc"
-      line: "[[ -s {{ user_home }}/{{ bash_welcome_file }} ]] && source {{ user_home }}/{{ bash_welcome_file }}"
+      dest: "{{ bash_rc_file }}"
+      line: "[[ -s {{ bash_welcome_file }} ]] && source {{ bash_welcome_file }}"
       owner: "{{ user }}"
       group: "{{ group }}"

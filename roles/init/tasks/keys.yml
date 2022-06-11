@@ -1,0 +1,37 @@
+---
+- name: Generate local ssh key
+  args: 
+    executable: /bin/bash
+  ansible.builtin.shell:
+    cmd: ssh-keygen -t {{ cluster_key_algorithm }} -f {{ cluster_key_file }} -q -N ""
+
+- name: Deploy local ssh key
+  ansible.posix.authorized_key:
+    user: "{{ user }}"
+    key: "{{ cluster_key_file }}.pub"
+
+
+
+# - name: Generate local GitHub key
+#   args:
+#     executable: /bin/bash
+#   ansible.builtin.shell:
+#     cmd: ssh-keygen -t {{ github_key_algorithm }} -f {{ github_key_file }} -q -N ""
+
+- name: Copy local private GitHub key
+  ansible.builtin.copy:
+    src: ~/.ssh/github_{{ github_key_algorithm }}
+    dest: "{{ github_key_dir }}"
+    mode: 0600
+
+- name: Copy local public GitHub key
+  ansible.builtin.copy:
+    src: ~/.ssh/github_{{ github_key_algorithm }}.pub
+    dest: "{{ github_key_dir }}"
+    mode: 0600
+
+- name: Add GitHub ssh key {{ github_key_file }} to local ssh-agent
+  args:
+    executable: /bin/bash
+  ansible.builtin.shell:
+    cmd: eval "$(ssh-agent -s)" && ssh-add "{{ github_key_file }}"

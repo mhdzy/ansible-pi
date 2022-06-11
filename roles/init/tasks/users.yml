@@ -1,0 +1,5 @@
+- name: Add a new user named devops
+  ansible.builtin.user:
+    name: "{{ create_user }}"
+    shell: /bin/bash
+    password: "{{ new_user_password }}"
