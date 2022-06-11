@@ -1,9 +1,8 @@
 ---
 - name: upgrade apt
   hosts: all
-  user: bartok
   become: yes
-  become_user: root
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: upgrade (and update) apt
       apt:

@@ -1,7 +1,10 @@
 ---
+create_user: bartok
+
 user: bartok
 group: bartok
 
+sudo_user: bartok
 root_user: root
 
 user_home: /home/{{ user }}

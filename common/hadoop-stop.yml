@@ -1,9 +1,8 @@
 ---
 - name: stop hadoop cluster
   hosts: master
-  user: bartok
   become: yes
-  become_user: bartok
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: stop dfs
       ansible.builtin.command: stop-dfs.sh

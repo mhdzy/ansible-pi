@@ -1,9 +1,8 @@
 ---
 - name: shutdown cluster
-  hosts: all 
-  user: bartok
+  hosts: all
   become: yes
-  become_user: root
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: shutdown
       ansible.builtin.command: /sbin/shutdown -h now

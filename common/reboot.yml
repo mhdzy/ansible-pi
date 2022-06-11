@@ -1,9 +1,8 @@
 ---
 - name: reboot cluster
   hosts: all 
-  user: bartok
   become: yes
-  become_user: root
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: reboot
       ansible.builtin.reboot:

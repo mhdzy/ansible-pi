@@ -1,9 +1,8 @@
 ---
 - name: start hadoop cluster
   hosts: master
-  user: bartok
   become: yes
-  become_user: bartok
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: start dfs
       ansible.builtin.command: start-dfs.sh
