@@ -1,9 +1,9 @@
 ---
 - name: test ansible hosts
   hosts: all
-  user: bartok
+  user: "{{ user }}"
   become: yes
-  become_user: bartok
+  become_user: "{{ sudo_user }}"
   tasks:
     - debug: msg="Ansible running in {{ ansible_lsb.id }}!"
 

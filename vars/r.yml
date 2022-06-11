@@ -1,0 +1,25 @@
+---
+r_root: "/opt/R"
+r_base_version: 4
+r_version: 4.2.0
+
+r_download_url: "https://cran.r-project.org/src/base/R-{{ r_base_version }}/R-{{ r_version }}.tar.gz"
+
+r_install_bin_dir: "{{ r_root }}/R-{{ r_version }}/bin"
+
+r_env_filename: "r-env.sh"
+r_env_file: "{{ etc_profile_d }}/{{ r_env_filename }}"
+
+r_apt_deps:
+  - g++
+  - gfortran
+  - libreadline-dev
+  - libbz2-dev
+  - xorg-dev
+  - liblzma-dev
+  - libpcre2-dev
+  - libcairo2-dev
+  - libcurl4-openssl-dev
+  - libpango1.0-dev
+  - tcl8.6-dev
+  - tk8.6-dev

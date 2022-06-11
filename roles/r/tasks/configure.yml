@@ -1,0 +1,15 @@
+---
+- name: copy {{ r_env_filename }} to {{ etc_profile_d }}
+  become: yes
+  ansible.builtin.template:
+    src: "{{ r_env_filename }}"
+    dest: "{{ etc_profile_d }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Source {{ r_env_filename }} in {{ bash_rc_filename }}
+  ansible.builtin.lineinfile:
+      dest: "{{ bash_rc_file }}"
+      line: "[[ -s {{ r_env_file }} ]] && source {{ r_env_file }}"
+      owner: "{{ user }}"
+      group: "{{ group }}"

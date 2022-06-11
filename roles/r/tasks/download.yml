@@ -1,0 +1,16 @@
+---
+- name: Create R root directory in {{ r_root }}
+  become: yes
+  ansible.builtin.file:
+    path: "{{ r_root }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Download R {{ r_version }} to {{ r_root }}
+  ansible.builtin.get_url:
+    url: "{{ r_download_url }}"
+    dest: "{{ r_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0755

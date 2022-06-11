@@ -1,0 +1,13 @@
+---
+- name: Unzip R {{ r_version }}.tar.gz
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ r_root }}/R-{{ r_version }}.tar.gz"
+    dest: "{{ r_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Remove R-{{ r_version }}.tar.gz
+  become: yes
+  ansible.builtin.command: 
+    cmd: "rm {{ r_root }}/R-{{ r_version }}.tar.gz"

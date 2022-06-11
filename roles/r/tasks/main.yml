@@ -1,0 +1,7 @@
+---
+#- ansible.builtin.include: donwload.yml
+#- ansible.builtin.include: unzip.yml
+#- ansible.builtin.include: apt.yml
+#- ansible.builtin.include: install.yml
+#- ansible.builtin.include: radian.yml
+- ansible.builtin.include: configure.yml
