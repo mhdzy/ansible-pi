@@ -5,6 +5,7 @@
     - vars/init.yml
     - vars/hadoop.yml
     - vars/java.yml
+    - vars/r.yml
     - vars/spark.yml
     - vars/user.yml
     - vars/yarn.yml

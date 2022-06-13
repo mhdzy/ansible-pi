@@ -11,6 +11,17 @@ user_home: /home/{{ user }}
 root_home: /home/{{ root_user }}
 
 user_download_dir: "{{ user_home }}"
-user_install_dir: /usr/local/bin
+user_local_bin_dir: /usr/local/bin
 
-bash_alias_file: .bash_alises
+# bash variables
+bash_rc_filename: ".bashrc"
+bash_rc_file: "{{ user_home }}/{{ bash_rc_filename }}"
+
+bash_aliases_filename: ".bash_aliases"
+bash_aliases_file: "{{ user_home }}/{{ bash_aliases_filename }}"
+
+bash_commands_filename: ".bash_commands"
+bash_commands_file: "{{ user_home }}/{{ bash_commands_filename }}"
+
+bash_welcome_filename: ".bash_welcome"
+bash_welcome_file: "{{ user_home }}/{{ bash_welcome_filename }}"

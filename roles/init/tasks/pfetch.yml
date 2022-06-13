@@ -10,9 +10,9 @@
     src: ~/Downloads/{{ pfetch_pkg }}
     dest: "{{ user_download_dir }}"
 
-- name: Install {{ pfetch_pkg }}
+- name: Install {{ pfetch_pkg }} to {{ user_local_bin_dir }}
   become: yes
   args:
     executable: /bin/bash
   ansible.builtin.shell: 
-    cmd: "sudo install {{ user_download_dir }}/{{ pfetch_pkg }}/{{ pfetch_pkg }} {{ user_install_dir }}"
+    cmd: "sudo install {{ user_download_dir }}/{{ pfetch_pkg }}/{{ pfetch_pkg }} {{ user_local_bin_dir }}"

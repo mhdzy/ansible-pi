@@ -1,6 +1,2 @@
-
-if [[ -z $R_SETUP_FLAG ]]; then
-  export PATH="{{ r_install_bin_dir }}:$PATH"
-fi
-
-export R_SETUP_FLAG=1
+export R_HOME="$(echo $({{ r_install_bin_dir }}/R RHOME | tail -n 1))"
+pathappend "{{ r_install_bin_dir }}"

@@ -4,6 +4,10 @@ init_apt_deps:
   - figlet
   - vim
 
+pfetch_pkg: pfetch
+pfetch_url: https://github.com/dylanaraps/pfetch.git
+
+# networking variables
 etc_dir: "/etc"
 
 hosts_dir: "{{ etc_dir }}"
@@ -29,9 +33,3 @@ cluster_key_file: "{{ cluster_key_dir }}/cluster_{{ cluster_key_algorithm }}"
 github_key_algorithm: ed25519
 github_key_dir: "{{ user_home }}/.ssh"
 github_key_file: "{{ github_key_dir }}/github_{{ github_key_algorithm }}"
-
-pip_pkg: pip
-figlet_pkg: figlet
-
-pfetch_pkg: pfetch
-pfetch_url: https://github.com/dylanaraps/pfetch.git
