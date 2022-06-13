@@ -1,4 +1,5 @@
 ---
+# ===== bash aliases =====
 - name: Copy {{ bash_aliases_filename }} file
   ansible.builtin.copy:
     src: "{{ bash_aliases_filename }}"
@@ -13,27 +14,11 @@
       owner: "{{ user }}"
       group: "{{ group }}"
 
+# ===== bash commands =====
 - name: Copy {{ bash_commands_filename }} file to {{ user_home }}
   ansible.builtin.copy:
     src: "{{ bash_commands_filename }}"
     dest: "{{ user_home }}"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-
-- name: Copy {{ bash_commands_filename }} file to {{ etc_profile_d }}
-  become: yes
-  ansible.builtin.copy:
-    src: "{{ bash_commands_filename }}"
-    dest: "{{ etc_profile_d }}"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-
-- name: Rename {{ bash_commands_file }} in {{ etc_profile_d }} to execute first
-  become: yes
-  ansible.builtin.copy: 
-    remote_src: yes
-    src: "{{ etc_profile_d }}/{{ bash_commands_filename }}" 
-    dest: "{{ etc_profile_d }}/aaa-commands.sh"
     owner: "{{ user }}"
     group: "{{ group }}"
 
@@ -45,6 +30,23 @@
     owner: "{{ user }}"
     group: "{{ group }}"
 
+- name: Copy {{ commands_filename }} file to {{ etc_profile_d }}
+  become: yes
+  ansible.builtin.copy:
+    src: "{{ commands_filename }}"
+    dest: "{{ etc_profile_d }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Copy {{ commands_wrapper }} file to {{ etc_profile_d }} to execute commands first
+  become: yes
+  ansible.builtin.template:
+    src: "{{ commands_wrapper }}"
+    dest: "{{ etc_profile_d }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+# ===== bash welcome =====
 - name: Copy {{ bash_welcome_filename }} file
   ansible.builtin.copy:
     src: "{{ bash_welcome_filename }}"

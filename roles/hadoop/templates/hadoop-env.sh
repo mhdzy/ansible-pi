@@ -1,3 +1,4 @@
+source "{{ commands_file }}"
 
 export JAVA_HOME="$(readlink -f /usr/bin/java | sed 's:bin/java::' | sed 's/\/$//')"
 pathappend "$JAVA_HOME/bin" "$JAVA_HOME/jre"

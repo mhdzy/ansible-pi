@@ -11,6 +11,10 @@ r_env_filename: "r-env.sh"
 r_env_file: "{{ etc_profile_d }}/{{ r_env_filename }}"
 
 r_apt_deps:
+  # sparklyr deps
+  - libssl-dev
+  - libxml2-dev
+  # R install deps
   - g++
   - gfortran
   - libreadline-dev
