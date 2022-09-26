@@ -1,0 +1,10 @@
+---
+- name: stop spark cluster
+  hosts: master
+  become: yes
+  become_user: "{{ sudo_user }}"
+  tasks:
+    - name: stop master
+      ansible.builtin.command: stop-master.sh
+    - name: stop workers
+      ansible.builtin.command: stop-workers.sh

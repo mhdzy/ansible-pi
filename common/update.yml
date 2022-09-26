@@ -1,10 +1,9 @@
 ---
 - name: update apt
   hosts: all
-  user: bartok
   become: yes
-  become_user: sudo
+  become_user: "{{ sudo_user }}"
   tasks:
     - name: update apt
-      apt:
+      ansible.builtin.apt:
         update_cache: yes

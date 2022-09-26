@@ -1,0 +1,5 @@
+---
+# - ansible.builtin.include: download.yml
+# - ansible.builtin.include: upload.yml 
+# - ansible.builtin.include: unzip.yml
+- ansible.builtin.include: configure.yml

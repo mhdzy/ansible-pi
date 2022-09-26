@@ -1,0 +1,6 @@
+---
+- name: ping cluster
+  hosts: all 
+  tasks:
+    - name: ping nodes
+      ansible.builtin.command: hostname

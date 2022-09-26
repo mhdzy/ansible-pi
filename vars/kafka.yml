@@ -1,0 +1,8 @@
+---
+
+# basic kafka env vars
+kafka_home: "/opt/kafka"
+kafka_version: "3.1.0"
+kafka_download_dir: "/etc"
+
+kafka_install: "{{ kafka_home }}"

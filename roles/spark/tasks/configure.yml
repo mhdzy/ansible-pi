@@ -1,0 +1,42 @@
+---
+- name: copy {{ spark_defaults_file }}
+  ansible.builtin.template: 
+    src: "{{ spark_defaults_file }}"
+    dest: "{{ spark_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ spark_workers_file }} to {{ spark_conf_dir }}
+  ansible.builtin.template: 
+    src: "{{ spark_workers_file }}"
+    dest: "{{ spark_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ spark_env_file }} to {{ spark_conf_dir }}
+  ansible.builtin.template: 
+    src: "{{ spark_env_file }}"
+    dest: "{{ spark_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ spark_env_file }} to {{ etc_profile_d }}
+  become: yes
+  ansible.builtin.template: 
+    src: "{{ spark_env_file }}"
+    dest: "{{ etc_profile_d }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: source {{ etc_profile_d }}/{{ spark_env_file }}
+  args:
+    executable: "/bin/bash"
+  ansible.builtin.shell:
+    cmd: source "{{ etc_profile_d }}/{{ spark_env_file }}"
+
+- name: append sourcing Spark env to {{ bash_rc_filename }}
+  ansible.builtin.lineinfile:
+      dest: "{{ bash_rc_file }}"
+      line: "[[ -s {{ etc_profile_d }}/{{ spark_env_file }} ]] && source {{ etc_profile_d }}/{{ spark_env_file }}"
+      owner: "{{ user }}"
+      group: "{{ group }}"

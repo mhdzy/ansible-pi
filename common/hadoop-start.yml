@@ -1,0 +1,13 @@
+---
+- name: start hadoop cluster
+  hosts: master
+  become: yes
+  become_user: "{{ sudo_user }}"
+  tasks:
+    - name: start dfs
+      ansible.builtin.command: start-dfs.sh
+    - name: start mapred
+      ansible.builtin.command: start-mapred.sh
+    - name: start yarn
+      ansible.builtin.command: start-yarn.sh
+      

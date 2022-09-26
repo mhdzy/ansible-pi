@@ -1,0 +1,14 @@
+---
+- name: Unzip Spark {{ spark_version }}
+  become: yes
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ spark_root }}/spark-{{ spark_version }}-bin-hadoop{{ spark_hadoop_version }}.tar"
+    dest: "{{ spark_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Rename unzipped Spark directory
+  become: yes
+  ansible.builtin.command: 
+    cmd: mv {{ spark_root }}/spark-{{ spark_version }}-bin-hadoop{{ spark_hadoop_version }} {{ spark_root }}/spark

@@ -1,0 +1,13 @@
+---
+- name: stop hadoop cluster
+  hosts: master
+  become: yes
+  become_user: "{{ sudo_user }}"
+  tasks:
+    - name: stop dfs
+      ansible.builtin.command: stop-dfs.sh
+    - name: stop mapred
+      ansible.builtin.command: stop-mapred.sh
+    - name: stop yarn
+      ansible.builtin.command: stop-yarn.sh
+      

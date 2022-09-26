@@ -1,0 +1,11 @@
+[cluster:children]
+master
+workers
+
+[master]
+pi4b0   ansible_connection=ssh  var_hostname=pi4b0
+
+[workers]
+pi4b1   ansible_connection=ssh  var_hostname=pi4b1
+pi4b2   ansible_connection=ssh  var_hostname=pi4b2
+pi4b3   ansible_connection=ssh  var_hostname=pi4b3
