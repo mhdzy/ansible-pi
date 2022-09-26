@@ -1,0 +1,23 @@
+---
+- name: Copy file {{ hosts_file }} to {{ hosts_dir }}
+  become: yes
+  ansible.builtin.template:
+    src: "{{ hosts_file }}"
+    dest: "{{ hosts_dir }}"
+
+- name: Copy {{ dhcpcd_file }} to {{ dhcpcd_dir }}
+  become: yes
+  ansible.builtin.template:
+    src: "{{ dhcpcd_file }}"
+    dest: "{{ dhcpcd_dir }}"
+
+- name: Include 8.8.8.8 in /etc/network/interfaces
+  become: yes
+  ansible.builtin.template:
+      src: "{{ interfaces_file }}"
+      dest: "{{ network_interfaces_file }}"
+
+- name: Block WiFi interface
+  become: yes
+  ansible.builtin.shell:
+    cmd: sudo rfkill block wifi

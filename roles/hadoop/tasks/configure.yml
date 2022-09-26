@@ -1,0 +1,81 @@
+---
+- name: create hadoop paths
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ hadoop_create_paths }}"
+
+- name: copy {{ core_site_file }}
+  ansible.builtin.template: 
+    src: "{{ core_site_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ hdfs_site_file }}
+  ansible.builtin.template: 
+    src: "{{ hdfs_site_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ mapred_site_file }}
+  ansible.builtin.template: 
+    src: "{{ mapred_site_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ yarn_site_file }}
+  ansible.builtin.template: 
+    src: "{{ yarn_site_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ masters_file }}
+  ansible.builtin.template: 
+    src: "{{ masters_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ workers_file }}
+  ansible.builtin.template: 
+    src: "{{ workers_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ hadoop_env_file }} to {{ etc_profile_d }}
+  become: yes
+  ansible.builtin.template: 
+    src: "{{ hadoop_env_file }}"
+    dest: "{{ etc_profile_d }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy {{ hadoop_env_file }} to {{ hadoop_conf_dir }}
+  become: yes
+  ansible.builtin.template: 
+    src: "{{ hadoop_env_file }}"
+    dest: "{{ hadoop_conf_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: source {{ etc_profile_d }}/{{ hadoop_env_file }}
+  args:
+    executable: "/bin/bash"
+  ansible.builtin.shell:
+    cmd: source "{{ etc_profile_d }}/{{ hadoop_env_file }}"
+
+- name: append sourcing Hadoop env to {{ bash_rc_filename }}
+  ansible.builtin.lineinfile:
+      dest: "{{ bash_rc_file }}"
+      line: "[[ -s {{ etc_profile_d }}/{{ hadoop_env_file }} ]] && source {{ etc_profile_d }}/{{ hadoop_env_file }}"
+      owner: "{{ user }}"
+      group: "{{ group }}"

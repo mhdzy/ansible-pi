@@ -1,0 +1,4 @@
+---
+jvm_home: "/usr/lib/jvm"
+java_packages:
+  - default-jdk

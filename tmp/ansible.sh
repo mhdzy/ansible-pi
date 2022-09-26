@@ -13,5 +13,3 @@
 
 ansible cluster --become -m shell -a "hostnamectl set-hostname {{ var_hostname }}"
 ansible cluster --become -m shell -a "hostnamectl status"
-
-

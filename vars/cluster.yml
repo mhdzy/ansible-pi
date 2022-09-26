@@ -1,0 +1,17 @@
+---
+master_ip: "pi4b0"
+master_hostname: "pi4b0"
+
+cluster_ips:
+  pi4b0: 192.168.0.240
+  pi4b1: 192.168.0.241
+  pi4b2: 192.168.0.242
+  pi4b3: 192.168.0.243
+  pi4b4: 192.168.0.244
+
+cluster_nodes:
+  - { "hostname":"pi4b0", "ip":"192.168.0.240" }
+  - { "hostname":"pi4b1", "ip":"192.168.0.241" }
+  - { "hostname":"pi4b2", "ip":"192.168.0.242" }
+  - { "hostname":"pi4b3", "ip":"192.168.0.243" }
+  - { "hostname":"pi4b4", "ip":"192.168.0.244" }

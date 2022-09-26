@@ -1,0 +1,9 @@
+---
+- name: Format Hadoop nodes
+  args:
+    executable: /bin/bash
+  environment:
+    JAVA_HOME: "{{ java_home }}"
+    PATH: "{{ hadoop_home }}/sbin:{{hadoop_home}}/bin:{{ ansible_env.PATH }}"
+  ansible.builtin.shell:
+    cmd: "hdfs namenode -format"

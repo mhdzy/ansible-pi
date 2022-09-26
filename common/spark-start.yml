@@ -1,0 +1,11 @@
+---
+- name: start spark cluster
+  hosts: master
+  become: yes
+  become_user: "{{ sudo_user }}"
+  tasks:
+    - name: start master
+      ansible.builtin.command: start-master.sh
+    - name: start workers
+      ansible.builtin.command: start-workers.sh
+      

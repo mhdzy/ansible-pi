@@ -1,0 +1,12 @@
+---
+- name: Unzip Hadoop {{ hadoop_version }}
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ hadoop_root }}/hadoop-{{ hadoop_version }}.tar.gz"
+    dest: "{{ hadoop_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Rename unzipped Hadoop directory
+  ansible.builtin.command: 
+    cmd: mv {{ hadoop_root }}/hadoop-{{ hadoop_version }} {{ hadoop_root }}/hadoop

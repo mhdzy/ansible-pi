@@ -1,0 +1,8 @@
+---
+- name: Upload Hadoop {{ hadoop_version }} to Hadoop directory
+  become: yes
+  ansible.builtin.copy:
+    src: ~/Downloads/hadoop-{{ hadoop_version }}.tar.gz
+    dest: "{{ hadoop_root }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
