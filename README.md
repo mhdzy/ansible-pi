@@ -1,5 +1,8 @@
 # ansible-pi
 
+## Sources
+While not a direct fork of [`hadoop-ansible`](https://github.com/mhdzy/hadoop-ansible), this repository does borrow code and structure from it.
+
 ## Overview
 
 directories:
